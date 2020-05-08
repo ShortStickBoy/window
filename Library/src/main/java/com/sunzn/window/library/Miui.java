@@ -48,7 +48,6 @@ class Miui {
     private static List<PermissionListener> mPermissionListenerList;
     private static PermissionListener mPermissionListener;
 
-
     static boolean rom() {
         LogUtil.d(" Miui  : " + Miui.getProp());
         return Build.MANUFACTURER.equals("Xiaomi");
@@ -90,7 +89,6 @@ class Miui {
         mPermissionListenerList.add(permissionListener);
     }
 
-
     private static void req_(final Context context) {
         switch (getProp()) {
             case miui5:
@@ -116,7 +114,6 @@ class Miui {
             }
         });
     }
-
 
     private static void reqForMiui5(Context context) {
         String packageName = context.getPackageName();
@@ -164,7 +161,6 @@ class Miui {
         }
     }
 
-
     /**
      * 有些机型在添加TYPE-TOAST类型时会自动改为TYPE_SYSTEM_ALERT，通过此方法可以屏蔽修改
      * 但是...即使成功显示出悬浮窗，移动的话也会崩溃
@@ -174,7 +170,6 @@ class Miui {
         wm.addView(view, params);
         setMiUI_International(false);
     }
-
 
     private static void setMiUI_International(boolean flag) {
         try {

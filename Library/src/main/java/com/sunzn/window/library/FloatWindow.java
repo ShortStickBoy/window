@@ -111,14 +111,12 @@ public class FloatWindow {
             return this;
         }
 
-
         public Builder setHeight(@Screen.screenType int screenType, float ratio) {
             mHeight = (int) ((screenType == Screen.width ?
                     Util.getScreenWidth(mApplicationContext) :
                     Util.getScreenHeight(mApplicationContext)) * ratio);
             return this;
         }
-
 
         public Builder setX(int x) {
             xOffset = x;
@@ -144,7 +142,6 @@ public class FloatWindow {
             return this;
         }
 
-
         /**
          * 设置 Activity 过滤器，用于指定在哪些界面显示悬浮窗，默认全部界面都显示
          *
@@ -160,7 +157,6 @@ public class FloatWindow {
         public Builder setMoveType(@MoveType.MOVE_TYPE int moveType) {
             return setMoveType(moveType, 0, 0);
         }
-
 
         /**
          * 设置带边距的贴边动画，只有 moveType 为 MoveType.slide，设置边距才有意义，这个方法不标准，后面调整
