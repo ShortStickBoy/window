@@ -97,7 +97,6 @@ public class IFloatWindowImpl extends IFloatWindow {
 
     @Override
     public void hide() {
-        FloatLifecycle.show = false;
         if (once || !isShow) {
             return;
         }
