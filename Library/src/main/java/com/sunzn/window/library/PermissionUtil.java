@@ -2,31 +2,15 @@ package com.sunzn.window.library;
 
 import android.app.AppOpsManager;
 import android.content.Context;
-import android.graphics.PixelFormat;
 import android.os.Binder;
 import android.os.Build;
 import android.provider.Settings;
-import android.view.View;
-import android.view.WindowManager;
-
-import androidx.annotation.RequiresApi;
 
 import java.lang.reflect.Method;
 
 class PermissionUtil {
 
     static boolean hasPermission(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return Settings.canDrawOverlays(context);
-        } else {
-            return hasPermissionBelowMarshmallow(context);
-        }
-    }
-
-    static boolean hasPermissionOnActivityResult(Context context) {
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
-            return hasPermissionForO(context);
-        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return Settings.canDrawOverlays(context);
         } else {
@@ -48,31 +32,6 @@ class PermissionUtil {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    /**
-     * 用于判断8.0时是否有权限，仅用于OnActivityResult
-     * 针对8.0官方bug:在用户授予权限后Settings.canDrawOverlays或checkOp方法判断仍然返回false
-     */
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private static boolean hasPermissionForO(Context context) {
-        try {
-            WindowManager mgr = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-            if (mgr == null) return false;
-            View viewToAdd = new View(context);
-            WindowManager.LayoutParams params = new WindowManager.LayoutParams(0, 0,
-                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
-                            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY : WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                    PixelFormat.TRANSPARENT);
-            viewToAdd.setLayoutParams(params);
-            mgr.addView(viewToAdd, params);
-            mgr.removeView(viewToAdd);
-            return true;
-        } catch (Exception e) {
-            LogUtil.e("hasPermissionForO e:" + e.toString());
-        }
-        return false;
     }
 
 }

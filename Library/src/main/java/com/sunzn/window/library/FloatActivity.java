@@ -41,7 +41,7 @@ public class FloatActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 756232212) {
-            if (PermissionUtil.hasPermissionOnActivityResult(this)) {
+            if (PermissionUtil.hasPermission(this)) {
                 mPermissionListener.onSuccess();
             } else {
                 mPermissionListener.onFailure();
