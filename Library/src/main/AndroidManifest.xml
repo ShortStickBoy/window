@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sunzn.window.library" >
+    <application>
+        <activity
+            android:name="com.sunzn.window.library.FloatActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="standard"
+            android:theme="@style/permission_PermissionActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden"/>
+    </application>
+</manifest>
