@@ -13,6 +13,8 @@ public abstract class IFloatWindow {
 
     public abstract void hide();
 
+    public abstract void desk();
+
     public abstract boolean isShowing();
 
     public abstract int getX();
