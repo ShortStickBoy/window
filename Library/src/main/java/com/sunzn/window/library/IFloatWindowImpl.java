@@ -65,9 +65,14 @@ public class IFloatWindowImpl extends IFloatWindow {
             }
 
             @Override
+            public void onShut() {
+                shut();
+            }
+
+            @Override
             public void onBackToDesktop() {
                 if (!mBuilder.mDesktopShow) {
-                    desk();
+                    hide();
                 }
                 if (mBuilder.mViewStateListener != null) {
                     mBuilder.mViewStateListener.onBackToDesktop();
@@ -97,7 +102,6 @@ public class IFloatWindowImpl extends IFloatWindow {
 
     @Override
     public void hide() {
-        FloatLifecycle.show = false;
         if (once || !isShow) {
             return;
         }
@@ -109,7 +113,8 @@ public class IFloatWindowImpl extends IFloatWindow {
     }
 
     @Override
-    public void desk() {
+    public void shut() {
+        FloatLifecycle.show = false;
         if (once || !isShow) {
             return;
         }

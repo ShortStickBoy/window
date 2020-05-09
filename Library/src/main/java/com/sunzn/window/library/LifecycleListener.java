@@ -11,6 +11,8 @@ interface LifecycleListener {
 
     void onHide();
 
+    void onShut();
+
     void onBackToDesktop();
 
 }

@@ -78,6 +78,7 @@ public class FloatLifecycle extends BroadcastReceiver implements Application.Act
         } else {
             mLifecycleListener.onHide();
         }
+
         if (appBackground) {
             appBackground = false;
         }
